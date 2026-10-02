@@ -1,75 +1,83 @@
-# React + TypeScript + Vite
+# TODO Application — Frontend
+-----------------------------
+React frontend for the TODO management application.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tech Stack
+--------------------
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* Axios
+* React Router
+* React Hook Form
+* React Query
+* Zod
 
-Currently, two official plugins are available:
+## Features
+--------------------
+* View all TODOs
+* Create a TODO
+* Edit a TODO
+* Mark a TODO as completed or open
+* Delete a TODO
+* Form validation
+* Loading states
+* Error handling
+* Confirmation dialogs for destructive actions
+* Responsive user interface
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Prerequisites
+--------------------
+Make sure the following are installed:
 
-## React Compiler
+* Node.js 18+
+* npm
+* Backend API running locally or a deployed backend API
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Setup
+--------------------
+1. Navigate to the frontend directory: cd client
+2. Install dependencies: npm install
 
-## Expanding the ESLint configuration
+## Environment Variables
+--------------------
+1. Create a .env file in the frontend directory:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+VITE_API_URL specifies the base URL of the backend REST API.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+For example: VITE_API_URL=http://localhost:3001/api
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+If the backend is deployed, replace this with the deployed API URL.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Run the Application
+--------------------
+Start the development server: npm run dev
 
-```
+The frontend will normally be available at: http://localhost:5173
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Production Build
+--------------------
+To create a production build: npm run build
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+To preview the production build locally: npm run preview
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Backend Dependency
+--------------------
+The frontend requires the backend API to be running and accessible through the configured VITE_API_URL.
 
-```
+The frontend communicates with the following REST endpoints:
+
+GET    /api/todos
+POST   /api/todos
+PUT    /api/todos/:id
+PATCH  /api/todos/:id/done
+DELETE /api/todos/:id
+
+## Assumptions & Limitations
+--------------------
+1. The application does not include user authentication or registration because authentication was not part of the assignment requirements.
+2. TODOs are not associated with individual users.
+3. The frontend depends on the backend API for persistent data.
+4. Running MongoDB-backed backend is required for TODO data to persist.
+5. The application is designed for the scope of the assignment and does not include advanced features such as real-time synchronization between multiple users.
