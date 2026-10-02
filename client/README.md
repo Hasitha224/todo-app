@@ -42,7 +42,7 @@ Make sure the following are installed:
 
 ## Environment Variables
 --------------------
-1. Create a .env file in the frontend directory:
+Create a .env file in the frontend directory:
 
 VITE_API_URL specifies the base URL of the backend REST API.
 
