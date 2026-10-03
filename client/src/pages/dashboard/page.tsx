@@ -35,7 +35,8 @@ const Dashboard = () => {
   const {
     tasks,
     total,
-    isFetching,
+    loading,
+    error,
     deleteTaskMutation,
     updateTaskStatusMutation,
   } = useTasks(
@@ -128,33 +129,39 @@ const Dashboard = () => {
             <span>Create Task</span>
         </button>
       </div>
-      {isFetching ? (
+      {loading ? (
         <div className="bg-card rounded-xl border border-panel-border shadow-sm p-12 text-center text-muted-foreground">
           <div className="flex gap-5 justify-center items-center space-x-2">
             <Hatch size={35} speed={2.75} color="#3d5a5c" stroke={4} />
             Loading Tasks...
           </div>
         </div>
+      ) : error ? (
+        <div className="rounded-xl border border-red-200 bg-red-50 p-12 text-center">
+            <h3 className="text-lg font-semibold text-red-700">
+                Failed to Load Tasks
+            </h3>
+
+            <p className="mt-2 text-sm text-red-600">
+                {error}
+            </p>
+        </div>
       ) : (
         <>
           {tasks && tasks.length > 0 ? (
               <div className="flex flex-col gap-1">
-                {tasks.length > 0 && (
-                  <DataTable
-                    data={tasks}
-                    columns={columns}
-                  />
-                )}
-                {tasks.length > 0 && (
-                  <PaginationControls
-                    currentPage={currentPage}
-                    totalPages={getTotalPages(total, pageSize)}
-                    pageSize={pageSize}
-                    totalRecords={total}
-                    onPageChange={handlePageChange}
-                    onPageSizeChange={handlePageSizeChange}
-                  />
-                )}
+                <DataTable
+                  data={tasks}
+                  columns={columns}
+                />
+                <PaginationControls
+                  currentPage={currentPage}
+                  totalPages={getTotalPages(total, pageSize)}
+                  pageSize={pageSize}
+                  totalRecords={total}
+                  onPageChange={handlePageChange}
+                  onPageSizeChange={handlePageSizeChange}
+                />
               </div>
             ) : (
               <div className="bg-card rounded-xl border border-panel-border shadow-sm p-12 text-center">
