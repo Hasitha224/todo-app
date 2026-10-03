@@ -22,7 +22,7 @@ This is a simple TODO app with basic task management functionality, covering bot
 --------------------
 ## Project Structure
 
-hiring-fullstack-todo/
+todo-app/
   |- client/   # React application
   |- server/    # Express API
 
