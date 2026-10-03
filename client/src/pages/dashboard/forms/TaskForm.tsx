@@ -114,7 +114,7 @@ const TaskForm = ({
                                 className="block text-sm font-medium text-foreground"
                                 htmlFor="title"
                                 >
-                                    Tast Title*
+                                    Task Title*
                                 </label>
                                 <input
                                     type="text"
