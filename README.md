@@ -35,7 +35,7 @@ todo-app/
 --------------------
 ## Features
 
-* Create, Edit, Delete Tasks
+* Create, Edit, Get, Delete Tasks
 * Pagination
 * Mark tasks as resolved/open
 
